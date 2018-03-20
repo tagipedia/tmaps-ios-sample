@@ -7,7 +7,100 @@
 3- Read our sample for examples
 
 ## Usage
-### dispatches
+### TMaps dispatches to Your APP
+
+```objc
+@{
+   @"type": @"READY"
+};
+```
+
+```objc
+@{
+   @"type": @"MAP_LOADED"
+};
+```
+
+```objc
+@{
+   @"type": @"FEATURES_TAPPED",
+   @"features": features
+};
+```
+
+features
+Required NSArray with NSDictionary, each NSDictionary with id, properties keys
+
+```objc
+@{
+   @"type": @"ASSOCIATED_FEATURE_TAPPED",
+   @"feature_id": feature_id,
+   @"feature": feature
+};
+```
+
+feature_id
+Required NSString with valid feature id
+
+feature
+Required NSDictionary with id, properties keys
+
+```objc
+@{
+   @"type": @"FEATURE_MARKED"
+};
+```
+
+feature_id
+Required NSString with valid feature id
+
+```objc
+@{
+   @"type": @"FEATURE_HIGHLIGHTED"
+};
+```
+
+feature_id
+Required NSString with valid feature id
+
+```objc
+@{
+   @"type": @"ZOOM_ENDED"
+};
+```
+
+dispatched after SET_ZOOM you called end
+
+```objc
+@{
+   @"type": @"CENTER_ENDED"
+};
+```
+
+dispatched after SET_CENTER you called end
+
+```objc
+@{
+   @"type": @"CATEGORY_MARKED",
+   @"category": category
+};
+```
+
+category
+Required valid NSString category
+
+
+```objc
+@{
+   @"type": @"ERROR",
+   @"error": error
+};
+```
+
+error
+Required NSDictionary with stack key and NSString value
+
+### Your APP dispatches to TMaps
 
 #### Set tenant data 
 
