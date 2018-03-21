@@ -14,7 +14,7 @@ it works using dispatch actions between your APP and TMaps. So your APP dispatch
 
 #### Ready
 
-dispatched when TMaps ready to receive dispatches from Your APP. So you should not dispatch any action before TMaps get ready.
+dispatched when TMaps ready to receive dispatches from Your APP. So **you should not dispatch any action before TMaps get ready**.
 
 ```objc
 @{
