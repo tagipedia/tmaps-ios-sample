@@ -12,7 +12,7 @@ it works using dispatch actions between your APP and TMaps. So your APP dispatch
 ## Usage
 ### TMaps actions dispatched to Your APP
 
-#### Ready
+#### <a name="READY">Ready</a>
 
 dispatched when TMaps ready to receive dispatches from Your APP. So **you should not dispatch any action before TMaps get ready**.
 
@@ -24,7 +24,7 @@ dispatched when TMaps ready to receive dispatches from Your APP. So **you should
 
 ___
 
-#### Map loaded
+#### <a name="MAP_LOADED">Map loaded</a>
 
 dispatched when map loaded and visible to user.
 
@@ -119,7 +119,7 @@ dispatched after MARK_FEATURE ended
 
 ___
 
-#### Feature highlighted
+#### <a name="HIGHLIGHT_FEATURE">Feature highlighted</a>
 
 dispatched after HIGHLIGHT_FEATURE ended
 
@@ -135,7 +135,7 @@ dispatched after HIGHLIGHT_FEATURE ended
 
 ___
 
-#### Zoom ended
+#### <a name="ZOOM_ENDED">Zoom ended</a>
 
 dispatched after SET_ZOOM ended
 
@@ -146,7 +146,7 @@ dispatched after SET_ZOOM ended
 ```
 ___
 
-#### Center ended
+#### <a name="CENTER_ENDED">Center ended</a>
 
 dispatched after SET_CENTER ended
 
@@ -174,7 +174,7 @@ dispatch it to set tenants of map.
 
 ___
 
-#### Set default feature popup template
+#### <a name="SET_DEFAULT_FEATURE_POPUP_TEMPLATE">Set default feature popup template</a>
 
 dispatch it to change default feature popup template.
 
@@ -405,7 +405,7 @@ dispatch(action)
 &nbsp;&nbsp;&nbsp;&nbsp;**action**
 &nbsp;&nbsp;&nbsp;&nbsp;**Required** *Object* with valid <a href="#your_app_to_tmaps">action</a>
 ___
-#### dispatchToContainer
+#### <a name="dispatchToContainer">dispatchToContainer</a>
 
 method to dispatch action from TMaps to your APP.
 
@@ -522,11 +522,21 @@ ___
 poi.getBoothId()
 ```
 
+## Advanced Scenrios (Look at sample for implementation of scenrios)
 
+### Highlight initial feature
 
+#### if you dispatch SET_ZOOM/SET_CENTER
 
+you should dispatch <a href="#HIGHLIGHT_FEATURE">HIGHLIGHT_FEATURE</a> for initial feature after <a href="#ZOOM_ENDED">ZOOM_ENDED</a>/<a href="#CENTER_ENDED">CENTER_ENDED</a>
 
+#### if you don't dispatch SET_ZOOM/SET_CENTER
 
+you should dispatch <a href="HIGHLIGHT_FEATURE">HIGHLIGHT_FEATURE</a> for initial feature after <a href="#MAP_LOADED">MAP_LOADED</a>
+
+### Add custom buttons inside feature popup template
+
+you should dispatch <a href="#SET_DEFAULT_FEATURE_POPUP_TEMPLATE">SET_DEFAULT_FEATURE_POPUP_TEMPLATE</a> for your customized template and add your custom buttons and use <a href="#dispatchToContainer">dispatchToContainer</a> when button clicked to handle the click action in your APP.
 
 
 
