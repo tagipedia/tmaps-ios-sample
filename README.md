@@ -51,10 +51,9 @@ dispatched when features in map tapped.
 
 ___
 
-
 #### Associated feature tapped
 
-dispatched when features in map tapped. and choose them most top feature visible to user.
+dispatched when features in map tapped with the top feature visible to user.
 
 ```objc
 @{
@@ -72,63 +71,9 @@ dispatched when features in map tapped. and choose them most top feature visible
 
 ___
 
-#### Feature marked
-
-dispatched after MARK_FEATURE you called end
-
-```objc
-@{
-   @"type": @"FEATURE_MARKED",
-   @"feature_id": feature_id
-};
-```
-
-&nbsp;&nbsp;&nbsp;&nbsp;**feature_id** <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;**Required** *NSString* with valid feature id
-
-___
-
-#### Feature highlighted
-
-dispatched after HIGHLIGHT_FEATURE you called end
-
-```objc
-@{
-   @"type": @"FEATURE_HIGHLIGHTED",
-   @"feature_id": feature_id
-};
-```
-
-&nbsp;&nbsp;&nbsp;&nbsp;**feature_id** <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;**Required** *NSString* with valid feature id
-
-___
-
-#### Zoom ended
-
-dispatched after SET_ZOOM you called end
-
-```objc
-@{
-   @"type": @"ZOOM_ENDED"
-};
-```
-___
-
-#### Center ended
-
-dispatched after SET_CENTER you called end
-
-```objc
-@{
-   @"type": @"CENTER_ENDED"
-};
-```
-___
-
 #### Category marked
 
-dispatched after mark category
+dispatched when select category in map
 
 ```objc
 @{
@@ -156,6 +101,61 @@ dispatched when error happened in TMaps
 &nbsp;&nbsp;&nbsp;&nbsp;**error** <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;**Required** *NSDictionary* with *stack* key and *NSString* value
 
+___
+
+#### Feature marked
+
+dispatched after MARK_FEATURE ended
+
+```objc
+@{
+   @"type": @"FEATURE_MARKED",
+   @"feature_id": feature_id
+};
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;**feature_id** <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;**Required** *NSString* with valid feature id
+
+___
+
+#### Feature highlighted
+
+dispatched after HIGHLIGHT_FEATURE ended
+
+```objc
+@{
+   @"type": @"FEATURE_HIGHLIGHTED",
+   @"feature_id": feature_id
+};
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;**feature_id** <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;**Required** *NSString* with valid feature id
+
+___
+
+#### Zoom ended
+
+dispatched after SET_ZOOM ended
+
+```objc
+@{
+   @"type": @"ZOOM_ENDED"
+};
+```
+___
+
+#### Center ended
+
+dispatched after SET_CENTER ended
+
+```objc
+@{
+   @"type": @"CENTER_ENDED"
+};
+```
+___
 
 ### Your APP actions dispatched to TMaps
 
