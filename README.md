@@ -2,12 +2,19 @@
 
 ## Installation
 ### To integrate TMaps into your Xcode project, add it to your project:
-1- Create folder named tmapswww
-2- Download and Unzip map package inside tmapswww (Request map package from Tagipedia Team)
-3- Read our sample for examples
+1. Create folder named tmapswww
+2. Download and Unzip map package inside tmapswww (Request map package from Tagipedia Team)
+3. Read our sample for examples
+
+## How it works
+it works using dispatch actions between your APP and TMaps. So your APP dispatch actions to TMaps and TMaps dispatch actions to your APP.
 
 ## Usage
-### TMaps dispatches to Your APP
+### TMaps actions dispatched to Your APP
+
+#### Ready
+
+dispatched when TMaps ready to receive dispatches from Your APP. So you should not dispatch any action before TMaps get ready.
 
 ```objc
 @{
@@ -15,11 +22,22 @@
 };
 ```
 
+___
+
+#### Map loaded
+
+dispatched when map loaded and visible to user.
+
 ```objc
 @{
    @"type": @"MAP_LOADED"
 };
 ```
+___
+
+#### Features tapped
+
+dispatched when features in map tapped.
 
 ```objc
 @{
@@ -28,8 +46,15 @@
 };
 ```
 
-features
-Required NSArray with NSDictionary, each NSDictionary with id, properties keys
+&nbsp;&nbsp;&nbsp;&nbsp;**features** <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;**Required** *NSArray* with *NSDictionary*, each *NSDictionary* with *id*, *properties* keys
+
+___
+
+
+#### Associated feature tapped
+
+dispatched when features in map tapped. and choose them most top feature visible to user.
 
 ```objc
 @{
@@ -39,45 +64,71 @@ Required NSArray with NSDictionary, each NSDictionary with id, properties keys
 };
 ```
 
-feature_id
-Required NSString with valid feature id
+&nbsp;&nbsp;&nbsp;&nbsp;**feature_id** <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;**Required** *NSString* with valid feature id
 
-feature
-Required NSDictionary with id, properties keys
+&nbsp;&nbsp;&nbsp;&nbsp;**feature** <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;**Required** *NSDictionary* with *id*, *properties* keys
 
-```objc
-@{
-   @"type": @"FEATURE_MARKED"
-};
-```
+___
 
-feature_id
-Required NSString with valid feature id
+#### Feature marked
+
+dispatched after MARK_FEATURE you called end
 
 ```objc
 @{
-   @"type": @"FEATURE_HIGHLIGHTED"
+   @"type": @"FEATURE_MARKED",
+   @"feature_id": feature_id
 };
 ```
 
-feature_id
-Required NSString with valid feature id
+&nbsp;&nbsp;&nbsp;&nbsp;**feature_id** <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;**Required** *NSString* with valid feature id
+
+___
+
+#### Feature highlighted
+
+dispatched after HIGHLIGHT_FEATURE you called end
+
+```objc
+@{
+   @"type": @"FEATURE_HIGHLIGHTED",
+   @"feature_id": feature_id
+};
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;**feature_id** <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;**Required** *NSString* with valid feature id
+
+___
+
+#### Zoom ended
+
+dispatched after SET_ZOOM you called end
 
 ```objc
 @{
    @"type": @"ZOOM_ENDED"
 };
 ```
+___
 
-dispatched after SET_ZOOM you called end
+#### Center ended
+
+dispatched after SET_CENTER you called end
 
 ```objc
 @{
    @"type": @"CENTER_ENDED"
 };
 ```
+___
 
-dispatched after SET_CENTER you called end
+#### Category marked
+
+dispatched after mark category
 
 ```objc
 @{
@@ -86,9 +137,14 @@ dispatched after SET_CENTER you called end
 };
 ```
 
-category
-Required valid NSString category
+&nbsp;&nbsp;&nbsp;&nbsp;**category** <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;**Required** valid *NSString* category
 
+___
+
+#### Error
+
+dispatched when error happened in TMaps
 
 ```objc
 @{
@@ -97,12 +153,15 @@ Required valid NSString category
 };
 ```
 
-error
-Required NSDictionary with stack key and NSString value
+&nbsp;&nbsp;&nbsp;&nbsp;**error** <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;**Required** *NSDictionary* with *stack* key and *NSString* value
 
-### Your APP dispatches to TMaps
+
+### Your APP actions dispatched to TMaps
 
 #### Set tenant data 
+
+dispatched 
 
 ```objc
 @{
@@ -111,8 +170,10 @@ Required NSDictionary with stack key and NSString value
 };
 ```
 
-payload
-Required NSArray with NSDictionary, each NSDictionary with id, feature_id, name, booth_id, icon, CUSTOM_KEYS_YOU_NEED keys
+&nbsp;&nbsp;&nbsp;&nbsp;**payload** <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;**Required** *NSArray* with *NSDictionary*, each *NSDictionary* with *id*, *feature_id*, *name*, *booth_id*, *icon*, *CUSTOM_KEYS_YOU_NEED* keys
+
+___
 
 #### Set default feature popup template
 
@@ -130,6 +191,8 @@ Required valid NSString angular
 template_custom_data
 Optional NSDictionary with CUSTOM_KEYS_YOU_NEED keys and NSString, NSNumber, NSArray, NSDictionary values
 
+___
+
 #### Set theme
 
 ```objc
@@ -145,6 +208,7 @@ Optional valid NSString color
 accent
 Optional valid NSString color
 
+___
 
 #### Load map
 
@@ -177,6 +241,8 @@ zoom
 Optional NSNumber
 Default zoom level
 
+___
+
 #### Change render mode
 
 ```objc
@@ -188,6 +254,8 @@ Default zoom level
 
 modeToRender
 Required NSString with 2D, 3D
+
+___
 
 
 #### Set zoom
@@ -206,6 +274,8 @@ Required NSNumber
 zoom_type
 Optional NSString with FLY_TO
 
+___
+
 #### Set center
 
 ```objc
@@ -219,6 +289,7 @@ center
 Required NSArray of NSNumbers
 Default map center in longitude and latitude
 
+___
 
 #### Highlight feature
 
@@ -232,6 +303,8 @@ Default map center in longitude and latitude
 feature_id
 Required NSString with valid feature id
 
+___
+
 #### Mark feature
 
 ```objc
@@ -243,7 +316,6 @@ Required NSString with valid feature id
 
 feature_id
 Required NSString with valid feature id
-
 
 
 
