@@ -532,7 +532,7 @@ you should dispatch <a href="#HIGHLIGHT_FEATURE">HIGHLIGHT_FEATURE</a> for initi
 
 #### if you don't dispatch SET_ZOOM/SET_CENTER
 
-you should dispatch <a href="HIGHLIGHT_FEATURE">HIGHLIGHT_FEATURE</a> for initial feature after <a href="#MAP_LOADED">MAP_LOADED</a>
+you should dispatch <a href="#HIGHLIGHT_FEATURE">HIGHLIGHT_FEATURE</a> for initial feature after <a href="#MAP_LOADED">MAP_LOADED</a>
 
 ### Add custom buttons inside feature popup template
 
