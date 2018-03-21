@@ -119,7 +119,7 @@ dispatched after MARK_FEATURE ended
 
 ___
 
-#### <a name="HIGHLIGHT_FEATURE">Feature highlighted</a>
+#### <a name="FEATURE_HIGHLIGHTED">Feature highlighted</a>
 
 dispatched after HIGHLIGHT_FEATURE ended
 
@@ -302,7 +302,7 @@ Default map center in longitude and latitude
 
 ___
 
-#### Highlight feature
+#### <a name="HIGHLIGHT_FEATURE">Highlight feature</a>
 
 dispatch it to highlight feature.
 
