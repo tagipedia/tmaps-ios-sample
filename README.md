@@ -452,7 +452,7 @@ poi.tags
 ___
 #### getTenant
 
-tenant of feature you set in <a href="set_tenant_data">SET_TENANT_DATA</a>
+tenant of feature you set in <a href="#set_tenant_data">SET_TENANT_DATA</a>
 
 ```js
 poi.getTenant()
@@ -460,7 +460,7 @@ poi.getTenant()
 ___
 #### <a name="getTenantName">getTenantName</a>
 
-tenant name of feature you set in <a href="set_tenant_data">SET_TENANT_DATA</a>
+tenant name of feature you set in <a href="#set_tenant_data">SET_TENANT_DATA</a>
 
 ```js
 poi.getTenantName()
@@ -468,7 +468,7 @@ poi.getTenantName()
 ___
 #### <a name="getTenantIcon">getTenantIcon</a>
 
-tenant icon of feature you set in <a href="set_tenant_data">SET_TENANT_DATA</a>
+tenant icon of feature you set in <a href="#set_tenant_data">SET_TENANT_DATA</a>
 
 ```js
 poi.getTenantIcon()
@@ -476,7 +476,7 @@ poi.getTenantIcon()
 ___
 #### <a name="getTenantBoothId">getTenantBoothId</a>
 
-tenant booth_id of feature you set in <a href="set_tenant_data">SET_TENANT_DATA</a>
+tenant booth_id of feature you set in <a href="#set_tenant_data">SET_TENANT_DATA</a>
 
 ```js
 poi.getTenantBoothId()
@@ -484,7 +484,7 @@ poi.getTenantBoothId()
 ___
 #### getDisplayName
 
-<a href="getTenantName">getTenantName</a> or feature name
+<a href="#getTenantName">getTenantName</a> or feature name
 
 ```js
 poi.getDisplayName()
@@ -508,7 +508,7 @@ poi.isBuilding()
 ___
 #### getIcon
 
-<a href="getTenantIcon">getTenantIcon</a> or feature icon
+<a href="#getTenantIcon">getTenantIcon</a> or feature icon
 
 ```js
 poi.getIcon()
@@ -516,7 +516,7 @@ poi.getIcon()
 ___
 #### getBoothId
 
-<a href="getTenantBoothId">getTenantBoothId</a> or feature booth id
+<a href="#getTenantBoothId">getTenantBoothId</a> or feature booth id
 
 ```js
 poi.getBoothId()
