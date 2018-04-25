@@ -156,6 +156,154 @@ dispatched after SET_CENTER ended
 };
 ```
 
+___
+
+#### <a name="EVENT_LOGGED">Event logged</a>
+
+dispatched after any event happened in TMaps. Your app can send analytics after receive this action.
+
+```objc
+@{
+   @"type": @"EVENT_LOGGED",
+   @"event_category": @"Maps",
+   @"event_action": @"Loaded",
+   @"event_label": map_name,
+   @"fields_object": @{
+    @"map_id": map_id
+   }
+};
+```
+
+```objc
+@{
+   @"type": @"EVENT_LOGGED",
+   @"event_category": @"Features",
+   @"event_action": @"Tapped",
+   @"event_label": feature_display_name,
+   @"fields_object": @{
+    @"map_id": map_id,
+    @"feature_id": feature_id
+   }
+};
+```
+
+```objc
+@{
+   @"type": @"EVENT_LOGGED",
+   @"event_category": @"Features",
+   @"event_action": @"Highlighted",
+   @"event_label": feature_display_name,
+   @"fields_object": @{
+    @"map_id": map_id,
+    @"feature_id": feature_id
+   }
+};
+```
+
+```objc
+@{
+   @"type": @"EVENT_LOGGED",
+   @"event_category": @"Features",
+   @"event_action": @"Searched",
+   @"event_label": feature_display_name,
+   @"fields_object": @{
+    @"map_id": map_id,
+    @"feature_id": feature_id
+   }
+};
+```
+
+```objc
+@{
+   @"type": @"EVENT_LOGGED",
+   @"event_category": @"Categories",
+   @"event_action": @"Highlighted",
+   @"event_label": category,
+   @"fields_object": @{
+    @"map_id": map_id
+   }
+};
+```
+
+```objc
+@{
+   @"type": @"EVENT_LOGGED",
+   @"event_category": @"Categories",
+   @"event_action": @"Searched",
+   @"event_label": category,
+   @"fields_object": @{
+    @"map_id": map_id
+   }
+};
+```
+
+```objc
+@{
+   @"type": @"EVENT_LOGGED",
+   @"event_category": @"Routes",
+   @"event_action": @"Routed",
+   @"event_label": source_display_name => target_display_name,
+   @"fields_object": @{
+    @"map_id": map_id,
+    @"source_feature_id": source_feature_id,
+    @"target_feature_id": target_feature_id
+   }
+};
+```
+
+```objc
+@{
+   @"type": @"EVENT_LOGGED",
+   @"event_category": @"Buildings",
+   @"event_action": @"Tapped",
+   @"event_label": building_name,
+   @"fields_object": @{
+    @"map_id": map_id,
+    @"building_id": building_id
+   }
+};
+```
+
+```objc
+@{
+   @"type": @"EVENT_LOGGED",
+   @"event_category": @"Buildings",
+   @"event_action": @"Opened",
+   @"event_label": building_name,
+   @"fields_object": @{
+    @"map_id": map_id,
+    @"building_id": building_id
+   }
+};
+```
+
+```objc
+@{
+   @"type": @"EVENT_LOGGED",
+   @"event_category": @"Floors",
+   @"event_action": @"Opened",
+   @"event_label": floor_label,
+   @"fields_object": @{
+    @"map_id": map_id,
+    @"layer_id": layer_id
+   }
+};
+```
+
+```objc
+@{
+   @"type": @"EVENT_LOGGED",
+   @"event_category": @"RenderModes",
+   @"event_action": @"Changed",
+   @"event_label": render_mode,
+   @"fields_object": @{
+    @"map_id": map_id
+   }
+};
+```
+
+
+
 ### <a name="your_app_to_tmaps">Your APP actions dispatched to TMaps</a>
 
 #### <a name="set_tenant_data">Set tenant data</a>
