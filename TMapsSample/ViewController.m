@@ -8,12 +8,15 @@
 
 #import "ViewController.h"
 
+#import <CoreLocation/CoreLocation.h>
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
 
+CLLocationManager* locationManager;
+TGMapViewController *tgController;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -179,9 +182,48 @@
         
     } else if ([type isEqualToString:@"PROFILE_BUTTON_CLICKED"]) {
         // this is example for custom dispatch type that you dispatched in your custom templete when custom profile button clicked
+    } else if ([type isEqualToString:@"CHECK_GPS_AVAILABILITY"]) {
+        if(![CLLocationManager locationServicesEnabled]){
+            [self checkLocationServicesAndStartUpdates:controller];
+        }
+        else {
+            [controller dispatch:@{@"type": @"START_UPDATING_LOCATION", @"isGpsActivated": @true }];
+        }
+    }
+}
+-(void) checkLocationServicesAndStartUpdates:(TGMapViewController *)controller {
+    tgController = controller;
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [locationManager requestWhenInUseAuthorization];
+    }
+    if (![CLLocationManager locationServicesEnabled] && [CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Need Location Services"
+                                                            message:@"We would like to use your location. Please enable location services from Settings > Location Services"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Settings"
+                                                  otherButtonTitles:@"Later", nil];
+        [alertView show];
+    }
+}
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if(buttonIndex == 0)//Settings button pressed
+    {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString] options:@{} completionHandler:nil];
     }
 }
 
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    if (![CLLocationManager locationServicesEnabled]) {
+        [tgController dispatch:@{@"type": @"START_UPDATING_LOCATION", @"isGpsActivated": @false }];
+    }
+    else {
+        [tgController dispatch:@{@"type": @"START_UPDATING_LOCATION", @"isGpsActivated": @true }];
+    }
+}
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showMap"]) {
         TGMapViewController* mapViewController = (TGMapViewController*)segue.destinationViewController;
