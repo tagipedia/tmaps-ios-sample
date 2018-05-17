@@ -155,6 +155,7 @@ TGMapViewController *tgController;
 //                               @"type": @"HIGHLIGHT_FEATURE",
 //                               @"feature_id": @"w22972"
 //                               }];
+     [controller dispatch:@{@"type": @"ENABLE_GPS_BUTTON"}];
     } else if ([type isEqualToString:@"FEATURES_TAPPED"]) {
 //        // mark feature
 //        [controller dispatch:@{
