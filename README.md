@@ -301,6 +301,17 @@ dispatched after any event happened in TMaps. Your app can send analytics after 
    }
 };
 ```
+___
+
+#### <a name="LOCATION_SERVICE">Check Location Service</a>
+
+dispatched after Tapped GPS Button in TMaps. You Should turn on Location Service and then dispatch <a href="#start_updating_location">Start</a> to begin updating location  
+
+```objc
+@{
+   @"type": @"CHECK_GPS_AVAILABILITY"
+};
+```
 
 
 
@@ -479,6 +490,30 @@ dispatch it to mark feature.
 
 &nbsp;&nbsp;&nbsp;&nbsp;**feature_id**
 &nbsp;&nbsp;&nbsp;&nbsp;**Required** *NSString* with valid feature id
+
+#### Show GPS Button
+
+dispatch it after Map Loaded to show GPS button
+
+```objc
+@{
+   @"type": @"ENABLE_GPS_BUTTON"
+}
+```
+
+#### <a name="start_updating_location">Start Updating Location</a>
+
+dispatch it after <a href="#LOCATION_SERVICE">check</a> location service to start updating user location and showing nearest places to user
+
+```objc
+@{
+   @"type": @"START_UPDATING_LOCATION",
+   @"is_gps_activated": is_gps_activated
+}
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;**is_gps_activated**
+&nbsp;&nbsp;&nbsp;&nbsp;**Required** *Boolean* 
 
 
 ## Types
