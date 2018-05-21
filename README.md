@@ -508,11 +508,11 @@ dispatch it after <a href="#LOCATION_SERVICE">check</a> location service to star
 ```objc
 @{
    @"type": @"START_UPDATING_LOCATION",
-   @"is_gps_activated": is_gps_activated
+   @"isGpsActivated": isGpsActivated
 }
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;**is_gps_activated**
+&nbsp;&nbsp;&nbsp;&nbsp;**isGpsActivated**
 &nbsp;&nbsp;&nbsp;&nbsp;**Required** *Boolean* 
 
 
