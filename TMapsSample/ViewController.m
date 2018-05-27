@@ -188,7 +188,7 @@ TGMapViewController *tgController;
             [self checkLocationServicesAndStartUpdates:controller];
         }
         else {
-            [controller dispatch:@{@"type": @"START_UPDATING_LOCATION", @"isGpsActivated": @true }];
+            [controller dispatch:@{@"type": @"START_UPDATING_LOCATION", @"is_gps_activated": @true }];
         }
     }
 }
@@ -219,10 +219,10 @@ TGMapViewController *tgController;
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     if (![CLLocationManager locationServicesEnabled]) {
-        [tgController dispatch:@{@"type": @"START_UPDATING_LOCATION", @"isGpsActivated": @false }];
+        [tgController dispatch:@{@"type": @"START_UPDATING_LOCATION", @"is_gps_activated": @false }];
     }
     else {
-        [tgController dispatch:@{@"type": @"START_UPDATING_LOCATION", @"isGpsActivated": @true }];
+        [tgController dispatch:@{@"type": @"START_UPDATING_LOCATION", @"is_gps_activated": @true }];
     }
 }
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
