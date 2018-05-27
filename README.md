@@ -501,6 +501,16 @@ dispatch it after Map Loaded to show GPS button
 }
 ```
 
+**Don't forget to add permissions** to Info.plist
+```
+<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+<string>to show nearest area to you</string>
+<key>NSLocationAlwaysUsageDescription</key>
+<string>to show nearest area to you</string>
+<key>NSLocationWhenInUseUsageDescription</key>
+<string>to show nearest area to you</string>
+```
+
 #### <a name="start_updating_location">Start Updating Location</a>
 
 dispatch it after <a href="#LOCATION_SERVICE">check</a> location service to start updating user location and showing nearest places to user
