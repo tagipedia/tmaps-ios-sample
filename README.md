@@ -523,7 +523,7 @@ dispatch it after Map Loaded to show GPS button
 }
 ```
 
-#### <a name="start_updating_location">Start Updating Location</a>
+#### <a name="start_updating_location">Start Updating Location using GPS</a>
 
 dispatch it after <a href="#LOCATION_SERVICE">check</a> location service to start updating user location and showing nearest places to user
 
@@ -547,7 +547,7 @@ dispatch it after Map Loaded to show Beacon Location button
 }
 ```
 
-#### <a name="start_updating_beacon_location">Start Updating Location</a>
+#### <a name="start_updating_beacon_location">Start Updating Location using Beacon Location</a>
 
 dispatch it after <a href="#BEACON_LOCATION_SERVICE">check</a> beacon location service to start updating user location and showing nearest places to user
 
@@ -562,7 +562,7 @@ dispatch it after <a href="#BEACON_LOCATION_SERVICE">check</a> beacon location s
 &nbsp;&nbsp;&nbsp;&nbsp;**Required** *Boolean* 
 
 
-#### <a name="SET_USER_BEACON_LOCATION">Start Updating Location</a>
+#### <a name="SET_USER_BEACON_LOCATION">Update User Location (Beacon Location)</a>
 
 dispatch it after beacon location service <a href="#START_POSITION_UPDATES_FOR_BEACON_LOCATION">started</a> to update user location and showing nearest places to user
 
