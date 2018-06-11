@@ -592,7 +592,7 @@ dispatch it after beacon location service <a href="#START_POSITION_UPDATES_FOR_B
    @"x": x,
    @"y": y,
    @"origin_lat": origin_lat,
-   @"origin_lng": origin_lat
+   @"origin_lng": origin_lng
 }
 ```
 
