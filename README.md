@@ -523,6 +523,7 @@ dispatch it after Map Loaded to show GPS button
 }
 ```
 
+
 #### <a name="start_updating_location">Start Updating Location using GPS</a>
 
 dispatch it after <a href="#LOCATION_SERVICE">check</a> location service to start updating user location and showing nearest places to user
@@ -536,6 +537,25 @@ dispatch it after <a href="#LOCATION_SERVICE">check</a> location service to star
 
 &nbsp;&nbsp;&nbsp;&nbsp;**is_gps_activated**
 &nbsp;&nbsp;&nbsp;&nbsp;**Required** *Boolean* 
+
+**Don't forget to add permissions** to Info.plist
+```
+<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+<string>to show nearest area to you</string>
+<key>NSLocationAlwaysUsageDescription</key>
+<string>to show nearest area to you</string>
+<key>NSLocationWhenInUseUsageDescription</key>
+<string>to show nearest area to you</string>
+```
+
+** Follow our samples ** 
+<br />
+https://github.com/tagipedia/tmaps-ios-sample/blob/9f8a3b36fc0a0a568c455584d01752e131492f7d/TMapsSample/ViewController.m#L158
+<br />
+https://github.com/tagipedia/tmaps-ios-sample/blob/9f8a3b36fc0a0a568c455584d01752e131492f7d/TMapsSample/ViewController.m#L186-L193
+<br />
+https://github.com/tagipedia/tmaps-ios-sample/blob/9f8a3b36fc0a0a568c455584d01752e131492f7d/TMapsSample/ViewController.m#L195-L227
+<br />
 
 #### Show Beacon Location Button
 
