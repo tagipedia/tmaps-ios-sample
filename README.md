@@ -313,7 +313,7 @@ dispatched after Tapped GPS Button in TMaps. You Should turn on Location Service
 };
 ```
 
-#### <a name="BEACON_LOCATION_SERVICE">Check Location Service</a>
+#### <a name="BEACON_LOCATION_SERVICE">Check Beacon Location Service</a>
 
 dispatched after Tapped Beacon Location Button in TMaps. You Should turn on Bluetooth Service and then dispatch <a href="#start_updating_beacon_location">Start</a> to begin updating location  
 
@@ -323,7 +323,7 @@ dispatched after Tapped Beacon Location Button in TMaps. You Should turn on Blue
 };
 ```
 
-#### <a name="START_POSITION_UPDATES_FOR_BEACON_LOCATION">Check Location Service</a>
+#### <a name="START_POSITION_UPDATES_FOR_BEACON_LOCATION">Start Beacon Location Manager</a>
 
 dispatched after starting updating beacon location in TMaps. You Should start or stop beacon manager according to beacon manager state. if beacon manager state is true you shoud start beacon manager then dispatch the new position to TMaps to <a href="#SET_USER_BEACON_LOCATION">update</a> user location
 
