@@ -7,6 +7,7 @@
 
 # Cordova Core Plugin Dependency Pod References
 
+pod 'EstimoteIndoorSDK'
 #pod 'CordovaPlugin-console'
 #pod 'cordova-plugin-camera'
 #pod 'cordova-plugin-contacts'
