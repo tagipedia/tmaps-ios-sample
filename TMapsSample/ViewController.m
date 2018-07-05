@@ -25,27 +25,6 @@ TGMapViewController *tgController;
     self.txtMapId.text = @"3";
 }
 
-//-    (void)indoorLocationManager:(EILIndoorLocationManager *)manager
-//didFailToUpdatePositionWithError:(NSError *)error {
-//    NSLog(@"failed to update position: %@", error);
-//}
-//
-//- (void)indoorLocationManager:(EILIndoorLocationManager *)manager
-//            didUpdatePosition:(EILOrientedPoint *)position
-//                 withAccuracy:(EILPositionAccuracy)positionAccuracy
-//                   inLocation:(EILLocation *)location {
-//    NSString *accuracy;
-//    switch (positionAccuracy) {
-//        case EILPositionAccuracyVeryHigh: accuracy = @"+/- 1.00m"; break;
-//        case EILPositionAccuracyHigh:     accuracy = @"+/- 1.62m"; break;
-//        case EILPositionAccuracyMedium:   accuracy = @"+/- 2.62m"; break;
-//        case EILPositionAccuracyLow:      accuracy = @"+/- 4.24m"; break;
-//        case EILPositionAccuracyVeryLow:  accuracy = @"+/- ? :-("; break;
-//        case EILPositionAccuracyUnknown:  accuracy = @"unknown"; break;
-//    }
-//    NSLog(@"x: %5.2f, y: %5.2f, orientation: %3.0f, accuracy: %@",
-//          position);
-//}
 - (void)mapViewController:(TGMapViewController *)controller indoorLocationManager:(EILIndoorLocationManager *)manager
 didFailToUpdatePositionWithError:(NSError *)error {
     NSLog(@"failed to update position: %@", error);
