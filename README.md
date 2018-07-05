@@ -313,6 +313,28 @@ dispatched after Tapped GPS Button in TMaps. You Should turn on Location Service
 };
 ```
 
+#### <a name="BEACON_LOCATION_SERVICE">Check Beacon Location Service</a>
+
+dispatched after Tapped Beacon Location Button in TMaps. You Should turn on Bluetooth Service and then dispatch <a href="#start_updating_beacon_location">Start</a> to begin updating location  
+
+```objc
+@{
+   @"type": @"CHECK_BEACON_LOCATION_AVAILABILITY"
+};
+```
+
+#### <a name="START_POSITION_UPDATES_FOR_BEACON_LOCATION">Start Beacon Location Manager</a>
+
+dispatched after starting updating beacon location in TMaps. You Should start or stop beacon manager according to beacon manager state. if beacon manager state is true you shoud start beacon manager then dispatch the new position to TMaps to <a href="#SET_USER_BEACON_LOCATION">update</a> user location
+
+```objc
+@{
+   @"type": @"START_POSITION_UPDATES_FOR_BEACON_LOCATION"
+   @"start_beacon_manager":start_beacon_manager
+};
+```
+&nbsp;&nbsp;&nbsp;&nbsp;**start_beacon_manager** <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;**Required** *Boolean*  beacon manager state
 
 
 ### <a name="your_app_to_tmaps">Your APP actions dispatched to TMaps</a>
@@ -501,7 +523,8 @@ dispatch it after Map Loaded to show GPS button
 }
 ```
 
-#### <a name="start_updating_location">Start Updating Location</a>
+
+#### <a name="start_updating_location">Start Updating Location using GPS</a>
 
 dispatch it after <a href="#LOCATION_SERVICE">check</a> location service to start updating user location and showing nearest places to user
 
@@ -515,6 +538,72 @@ dispatch it after <a href="#LOCATION_SERVICE">check</a> location service to star
 &nbsp;&nbsp;&nbsp;&nbsp;**is_gps_activated**
 &nbsp;&nbsp;&nbsp;&nbsp;**Required** *Boolean* 
 
+**Don't forget to add permissions** to Info.plist
+```
+<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+<string>to show nearest area to you</string>
+<key>NSLocationAlwaysUsageDescription</key>
+<string>to show nearest area to you</string>
+<key>NSLocationWhenInUseUsageDescription</key>
+<string>to show nearest area to you</string>
+```
+
+** Follow our samples ** 
+<br />
+https://github.com/tagipedia/tmaps-ios-sample/blob/9f8a3b36fc0a0a568c455584d01752e131492f7d/TMapsSample/ViewController.m#L158
+<br />
+https://github.com/tagipedia/tmaps-ios-sample/blob/9f8a3b36fc0a0a568c455584d01752e131492f7d/TMapsSample/ViewController.m#L186-L193
+<br />
+https://github.com/tagipedia/tmaps-ios-sample/blob/9f8a3b36fc0a0a568c455584d01752e131492f7d/TMapsSample/ViewController.m#L195-L227
+<br />
+
+#### Show Beacon Location Button
+
+dispatch it after Map Loaded to show Beacon Location button
+
+```objc
+@{
+   @"type": @"ENABLE_BEACON_LOCATION_BUTTON"
+}
+```
+
+#### <a name="start_updating_beacon_location">Start Updating Location using Beacon Location</a>
+
+dispatch it after <a href="#BEACON_LOCATION_SERVICE">check</a> beacon location service to start updating user location and showing nearest places to user
+
+```objc
+@{
+   @"type": @"START_UPDATING_BEACON_LOCATION",
+   @"is_beacon_location_activated": is_beacon_location_activated
+}
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;**is_beacon_location_activated**
+&nbsp;&nbsp;&nbsp;&nbsp;**Required** *Boolean* 
+
+
+#### <a name="SET_USER_BEACON_LOCATION">Update User Location (Beacon Location)</a>
+
+dispatch it after beacon location service <a href="#START_POSITION_UPDATES_FOR_BEACON_LOCATION">started</a> to update user location and showing nearest places to user
+
+```objc
+@{
+   @"type": @"SET_USER_BEACON_LOCATION",
+   @"x": x,
+   @"y": y,
+   @"origin_lat": origin_lat,
+   @"origin_lng": origin_lng
+}
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;**x**
+&nbsp;&nbsp;&nbsp;&nbsp;**Required** *NSNumber* </br>
+&nbsp;&nbsp;&nbsp;&nbsp;**y**
+&nbsp;&nbsp;&nbsp;&nbsp;**Required** *NSNumber* </br>
+&nbsp;&nbsp;&nbsp;&nbsp;**origin_lat**
+&nbsp;&nbsp;&nbsp;&nbsp;**Required** *NSNumber* </br>
+&nbsp;&nbsp;&nbsp;&nbsp;**origin_lng**
+&nbsp;&nbsp;&nbsp;&nbsp;**Required** *NSNumber* 
 
 ## Types
 
