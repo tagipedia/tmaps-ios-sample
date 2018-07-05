@@ -9,12 +9,14 @@
 #import "ViewController.h"
 
 #import <CoreLocation/CoreLocation.h>
+#import <CoreBluetooth/CoreBluetooth.h>
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
 
+CBCentralManager *bluetoothManager;
 CLLocationManager* locationManager;
 TGMapViewController *tgController;
 - (void)viewDidLoad {
@@ -23,6 +25,35 @@ TGMapViewController *tgController;
     self.txtMapId.text = @"3";
 }
 
+- (void)mapViewController:(TGMapViewController *)controller indoorLocationManager:(EILIndoorLocationManager *)manager
+didFailToUpdatePositionWithError:(NSError *)error {
+    NSLog(@"failed to update position: %@", error);
+}
+
+- (void)mapViewController:(TGMapViewController *)controller indoorLocationManager:(EILIndoorLocationManager *)manager
+        didUpdatePosition:(EILOrientedPoint *)position
+             withAccuracy:(EILPositionAccuracy)positionAccuracy
+               inLocation:(EILLocation *)location {
+    NSString *accuracy;
+    switch (positionAccuracy) {
+        case EILPositionAccuracyVeryHigh: accuracy = @"+/- 1.00m"; break;
+        case EILPositionAccuracyHigh:     accuracy = @"+/- 1.62m"; break;
+        case EILPositionAccuracyMedium:   accuracy = @"+/- 2.62m"; break;
+        case EILPositionAccuracyLow:      accuracy = @"+/- 4.24m"; break;
+        case EILPositionAccuracyVeryLow:  accuracy = @"+/- ? :-("; break;
+        case EILPositionAccuracyUnknown:  accuracy = @"unknown"; break;
+    }
+    NSLog(@"x: %5.2f, y: %5.2f, orientation: %3.0f, accuracy: %@",
+          position.x, position.y, position.orientation, accuracy);
+    NSDictionary *ll = location;
+    [controller dispatch:@{
+                           @"type": @"SET_USER_BEACON_LOCATION",
+                           @"x": [NSNumber numberWithDouble:position.x],
+                           @"y": [NSNumber numberWithDouble:position.y],
+                           @"origin_lat": [ll valueForKey:@"latitude"],
+                           @"origin_lng": [ll valueForKey:@"longitude"]
+                           }];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -155,7 +186,8 @@ TGMapViewController *tgController;
 //                               @"type": @"HIGHLIGHT_FEATURE",
 //                               @"feature_id": @"w22972"
 //                               }];
-     [controller dispatch:@{@"type": @"ENABLE_GPS_BUTTON"}];
+//     [controller dispatch:@{@"type": @"ENABLE_GPS_BUTTON"}];
+        [controller enableBeaconLocationButton];
     } else if ([type isEqualToString:@"FEATURES_TAPPED"]) {
 //        // mark feature
 //        [controller dispatch:@{
@@ -190,8 +222,36 @@ TGMapViewController *tgController;
         else {
             [controller dispatch:@{@"type": @"START_UPDATING_LOCATION", @"is_gps_activated": @true }];
         }
+    } else if ([type isEqualToString:@"CHECK_BEACON_LOCATION_AVAILABILITY"]) {
+        bluetoothManager = [[CBCentralManager alloc]
+                            initWithDelegate:controller
+                            queue:dispatch_get_main_queue()
+                            options:@{CBCentralManagerOptionShowPowerAlertKey: @(YES)}];
+    }else if ([type isEqualToString:@"START_POSITION_UPDATES_FOR_BEACON_LOCATION"]) {
+        BOOL start_beacon_manager = [[command valueForKey:@"start_beacon_manager"] intValue];
+        if(start_beacon_manager){
+            [controller startPositionUpdatesForLocation];
+        }
+        else {
+            [controller stopPositionUpdates];
+        }
     }
 }
+
+
+-(void) mapViewController:(TGMapViewController*) controller centralManagerDidUpdateState:(CBCentralManager *)central{
+    NSString *stateString = nil;
+    switch(bluetoothManager.state)
+    {
+        case CBCentralManagerStatePoweredOff: [controller dispatch:@{@"type": @"START_UPDATING_BEACON_LOCATION", @"is_beacon_location_activated": @false }];
+            break;
+        case CBCentralManagerStatePoweredOn: [controller dispatch:@{@"type": @"START_UPDATING_BEACON_LOCATION", @"is_beacon_location_activated": @true }]; break;
+        default: stateString = @"State unknown, update imminent.";
+            break;
+    }
+}
+
+
 -(void) checkLocationServicesAndStartUpdates:(TGMapViewController *)controller {
     tgController = controller;
     locationManager = [[CLLocationManager alloc] init];

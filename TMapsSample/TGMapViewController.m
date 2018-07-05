@@ -9,11 +9,21 @@
 #import "TGMapViewController.h"
 #import <WebKit/WebKit.h>
 #import <WebKit/WKScriptMessageHandler.h>
+#import "EstimoteSDK/ESTConfig.h"
+#import "EILIndoorLocationManager.h"
+#import "EILRequestFetchLocation.h"
+#import "EILOrientedPoint.h"
+#define APP_ID @"AppID"
+#define APP_TOKEN @"AppToken"
+#define LOCATION_IDENTIFIER @"LocationIdentifier"
 
 
 
-@interface TGMapViewController () <WKScriptMessageHandler, WKNavigationDelegate>
+@interface TGMapViewController () <WKScriptMessageHandler, WKNavigationDelegate, EILIndoorLocationManagerDelegate>
 @property (nonatomic, weak) WKWebView* webView;
+@property (nonatomic) EILIndoorLocationManager *locationManager;
+@property (nonatomic) EILLocation *location;
+@property (nonatomic) CBCentralManager *bluetoothManager;
 @end
 
 
@@ -136,6 +146,10 @@
     }
 }
 
+- (void)centralManagerDidUpdateState:(CBCentralManager *)central
+{
+    [self.delegate mapViewController:self centralManagerDidUpdateState:(CBCentralManager *)central];
+}
 
 -(void) navigateWebView {
     NSString* path = [[NSBundle mainBundle] pathForResource:@"tmapswww/index" ofType:@"html"];
@@ -180,12 +194,48 @@
     // Pass the selected object to the new view controller.
 }
 */
+-    (void)indoorLocationManager:(EILIndoorLocationManager *)manager
+didFailToUpdatePositionWithError:(NSError *)error {
+    [self.delegate mapViewController:self indoorLocationManager:manager didFailToUpdatePositionWithError:error];
+}
 
+- (void)indoorLocationManager:(EILIndoorLocationManager *)manager
+            didUpdatePosition:(EILOrientedPoint *)position
+                 withAccuracy:(EILPositionAccuracy)positionAccuracy
+                   inLocation:(EILLocation *)location {
+    [self.delegate mapViewController:self indoorLocationManager:manager didUpdatePosition:position withAccuracy:positionAccuracy inLocation:location];
+}
 -(void) dispatch:(NSDictionary *)command {
     
     [self performSelectorOnMainThread:@selector(dispatchInternal:) withObject:command waitUntilDone:NO];
 }
 
+-(void) initializeBeaconLocation{
+    self.locationManager = [EILIndoorLocationManager new];
+    self.locationManager.delegate = self;
+    NSString *appID = [TGMapViewController getAppSecretInfoValueForKey:APP_ID];
+    NSString *appToken = [TGMapViewController getAppSecretInfoValueForKey:APP_TOKEN];
+    NSString *locationIdentifier = [TGMapViewController getAppSecretInfoValueForKey:LOCATION_IDENTIFIER];
+    [ESTConfig setupAppID:appID andAppToken:appToken];
+    EILRequestFetchLocation *fetchLocationRequest =
+    [[EILRequestFetchLocation alloc] initWithLocationIdentifier:locationIdentifier];
+    [fetchLocationRequest sendRequestWithCompletion:^(EILLocation *location,
+                                                      NSError *error) {
+        if (location != nil) {
+            self.location = location;
+            NSLog(@"%@", _locationManager);
+        } else {
+            NSLog(@"can't fetch location: %@", error);
+        }
+    }];
+}
++(NSString *)getAppSecretInfoValueForKey:(NSString *)key;
+{
+    NSString *name = @"Config.Secrets";
+    NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@"plist"];
+    NSDictionary *infoDictionary = [[NSDictionary alloc] initWithContentsOfFile:path];
+    return [infoDictionary objectForKey:key];
+}
 -(void) dispatchInternal:(NSDictionary *)command {
     
     NSError*error;
@@ -204,4 +254,16 @@
      NSLog(@"%s",__FUNCTION__);
 }
 
+-(void)enableBeaconLocationButton {
+    [self dispatch:@{@"type": @"ENABLE_BEACON_LOCATION_BUTTON"}];
+    [self initializeBeaconLocation];
+}
+
+-(void)startPositionUpdatesForLocation{
+    [self.locationManager startPositionUpdatesForLocation:self.location];
+}
+
+-(void)stopPositionUpdates {
+    [self.locationManager stopPositionUpdates];
+}
 @end
