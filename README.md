@@ -301,6 +301,34 @@ dispatched after any event happened in TMaps. Your app can send analytics after 
    }
 };
 ```
+
+```objc
+@{
+  @"type": @"EVENT_LOGGED",
+  @"event_category": @"LocationUpdated",
+  @"event_action": @"Gps",
+  @"event_label": latitude/longitude,
+  @"fields_object": @{
+   @"map_id": map_id,
+   @"lat": latitude,
+   @"lng": longitude,
+  }
+};
+```
+
+```objc
+@{
+  @"type": @"EVENT_LOGGED",
+  @"event_category": @"LocationUpdated",
+  @"event_action": @"Beacon",
+  @"event_label": latitude/longitude,
+  @"fields_object": @{
+   @"map_id": map_id,
+   @"lat": latitude,
+   @"lng": longitude,
+  }
+};
+```
 ___
 
 #### <a name="LOCATION_SERVICE">Check Location Service</a>
