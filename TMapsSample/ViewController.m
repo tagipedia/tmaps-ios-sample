@@ -187,7 +187,7 @@ didFailToUpdatePositionWithError:(NSError *)error {
 //                               @"feature_id": @"w22972"
 //                               }];
 //     [controller dispatch:@{@"type": @"ENABLE_GPS_BUTTON"}];
-        [controller enableBeaconLocationButton];
+//        [controller enableBeaconLocationButton];
     } else if ([type isEqualToString:@"FEATURES_TAPPED"]) {
 //        // mark feature
 //        [controller dispatch:@{
