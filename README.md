@@ -383,8 +383,11 @@ dispatch it to change theme of map.
 
 ```objc
 @{
-   @"primary": primary_color,
-   @"accent": accent_color
+   @"type": @"SET_THEME",
+   @"theme": @{
+      @"primary": primary_color,
+      @"accent": accent_color
+   }
 };
 ```
 
