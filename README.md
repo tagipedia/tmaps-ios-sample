@@ -526,7 +526,6 @@ dispatch it to highlight feature.
 &nbsp;&nbsp;&nbsp;&nbsp;**Required** *NSString* with valid feature id
 
 ___
-
 #### Mark feature
 
 dispatch it to mark feature.
@@ -541,6 +540,7 @@ dispatch it to mark feature.
 &nbsp;&nbsp;&nbsp;&nbsp;**feature_id**
 &nbsp;&nbsp;&nbsp;&nbsp;**Required** *NSString* with valid feature id
 
+___
 #### Show GPS Button
 
 dispatch it after Map Loaded to show GPS button
@@ -550,8 +550,7 @@ dispatch it after Map Loaded to show GPS button
    @"type": @"ENABLE_GPS_BUTTON"
 }
 ```
-
-
+___
 #### <a name="start_updating_location">Start Updating Location using GPS</a>
 
 dispatch it after <a href="#LOCATION_SERVICE">check</a> location service to start updating user location and showing nearest places to user
@@ -585,6 +584,7 @@ https://github.com/tagipedia/tmaps-ios-sample/blob/9f8a3b36fc0a0a568c455584d0175
 https://github.com/tagipedia/tmaps-ios-sample/blob/9f8a3b36fc0a0a568c455584d01752e131492f7d/TMapsSample/ViewController.m#L195-L227
 <br />
 
+___
 #### Show Beacon Location Button
 
 dispatch it after Map Loaded to show Beacon Location button
@@ -594,7 +594,7 @@ dispatch it after Map Loaded to show Beacon Location button
    @"type": @"ENABLE_BEACON_LOCATION_BUTTON"
 }
 ```
-
+___
 #### <a name="start_updating_beacon_location">Start Updating Location using Beacon Location</a>
 
 dispatch it after <a href="#BEACON_LOCATION_SERVICE">check</a> beacon location service to start updating user location and showing nearest places to user
@@ -609,7 +609,7 @@ dispatch it after <a href="#BEACON_LOCATION_SERVICE">check</a> beacon location s
 &nbsp;&nbsp;&nbsp;&nbsp;**is_beacon_location_activated**
 &nbsp;&nbsp;&nbsp;&nbsp;**Required** *Boolean* 
 
-
+___
 #### <a name="SET_USER_BEACON_LOCATION">Update User Location (Beacon Location)</a>
 
 dispatch it after beacon location service <a href="#START_POSITION_UPDATES_FOR_BEACON_LOCATION">started</a> to update user location and showing nearest places to user
@@ -632,6 +632,19 @@ dispatch it after beacon location service <a href="#START_POSITION_UPDATES_FOR_B
 &nbsp;&nbsp;&nbsp;&nbsp;**Required** *NSNumber* </br>
 &nbsp;&nbsp;&nbsp;&nbsp;**origin_lng**
 &nbsp;&nbsp;&nbsp;&nbsp;**Required** *NSNumber* 
+___
+#### Set device data 
+
+dispatch it to set device id and device type 
+
+```objc
+@{
+   @"type": @"SET_DEVICE_DATA",
+   @"device_id": device_id ,
+   @"device_type": @"IOS"
+}
+```
+
 
 ## Types
 
