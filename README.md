@@ -644,6 +644,12 @@ dispatch it to set device id and device type
    @"device_type": @"IOS"
 }
 ```
+
+&nbsp;&nbsp;&nbsp;&nbsp;**device_id**
+&nbsp;&nbsp;&nbsp;&nbsp;**Required** *NSString*
+
+&nbsp;&nbsp;&nbsp;&nbsp;**device_type**
+&nbsp;&nbsp;&nbsp;&nbsp;**Required** *NSString* with IOS
 ___
 #### Set application secrets 
 
@@ -656,7 +662,11 @@ dispatch it to set client id and client secret
    @"client_secret": client_secret
 }
 ```
+&nbsp;&nbsp;&nbsp;&nbsp;**client_id**
+&nbsp;&nbsp;&nbsp;&nbsp;**Required** *NSString*
 
+&nbsp;&nbsp;&nbsp;&nbsp;**client_secret**
+&nbsp;&nbsp;&nbsp;&nbsp;**Required** *NSString*
 
 ## Types
 
