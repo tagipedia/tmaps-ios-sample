@@ -644,6 +644,18 @@ dispatch it to set device id and device type
    @"device_type": @"IOS"
 }
 ```
+___
+#### Set application secrets 
+
+dispatch it to set client id and client secret 
+
+```objc
+@{
+   @"type": @"SET_APPLICATION_SECRETS",
+   @"client_id": client_id ,
+   @"client_secret": client_secret
+}
+```
 
 
 ## Types
