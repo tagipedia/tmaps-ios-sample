@@ -879,7 +879,11 @@ you should dispatch <a href="#SET_DEFAULT_FEATURE_POPUP_TEMPLATE">SET_DEFAULT_FE
 
 
 
+## Important Notes 
+to fix map scrolling in new IOS devices add this line 
 
+```objc
+webView.scrollView.scrollEnabled = false;
+```
 
-
-
+[See it in code](https://github.com/tagipedia/tmaps-ios-sample/blob/a5021feca3e6675492a79fb156972ada82dd8e2f/TMapsSample/TGMapViewController.m#L76)
