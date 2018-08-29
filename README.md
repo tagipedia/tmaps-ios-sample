@@ -637,7 +637,7 @@ dispatch it after beacon location service <a href="#START_POSITION_UPDATES_FOR_B
 &nbsp;&nbsp;&nbsp;&nbsp;**origin_lng**
 &nbsp;&nbsp;&nbsp;&nbsp;**Required** *NSNumber* 
 ___
-#### Set device data 
+#### <a name="SET_DEVICE_DATA">Set device data</a>
 
 dispatch it to set device id and device type 
 
@@ -655,7 +655,7 @@ dispatch it to set device id and device type
 &nbsp;&nbsp;&nbsp;&nbsp;**device_type**
 &nbsp;&nbsp;&nbsp;&nbsp;**Required** *NSString* with IOS
 ___
-#### Set application secrets 
+#### <a name="SET_APPLICATION_SECRETS">Set application secrets</a>
 
 dispatch it to set client id and client secret 
 
