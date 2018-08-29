@@ -73,6 +73,7 @@
     self.webView = webView;
     self.webView.navigationDelegate = self;
     webView.translatesAutoresizingMaskIntoConstraints = NO;
+    webView.scrollView.scrollEnabled = false;
     
     [self.view addSubview:webView];
     

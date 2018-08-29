@@ -38,4 +38,5 @@ didFailToUpdatePositionWithError:(NSError *)error;
 -(void) enableBeaconLocationButton;
 -(void) startPositionUpdatesForLocation;
 -(void) stopPositionUpdates;
++(NSString *)getAppSecretInfoValueForKey:(NSString *)key;
 @end

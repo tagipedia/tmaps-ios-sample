@@ -19,6 +19,8 @@
 		726B98BB1E0325EB00094124 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 726B98B91E0325EB00094124 /* LaunchScreen.storyboard */; };
 		726B98C61E0325EB00094124 /* TMapsSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 726B98C51E0325EB00094124 /* TMapsSampleTests.m */; };
 		726B98D11E0325EB00094124 /* TMapsSampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 726B98D01E0325EB00094124 /* TMapsSampleUITests.m */; };
+		77F9A3C62135469900215761 /* Config.Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 77F9A3C52135469800215761 /* Config.Secrets.plist */; };
+		77F9A3C8213546A000215761 /* Config.Secrets.Example.plist in Resources */ = {isa = PBXBuildFile; fileRef = 77F9A3C7213546A000215761 /* Config.Secrets.Example.plist */; };
 		C35B9C202057B18C00290F57 /* tenants.json in Resources */ = {isa = PBXBuildFile; fileRef = C35B9C1F2057B18C00290F57 /* tenants.json */; };
 		CB54937B210F7DF5B098D1CF /* libPods-TMapsSampleUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8782BD42DF1A77FA61A298 /* libPods-TMapsSampleUITests.a */; };
 /* End PBXBuildFile section */
@@ -64,6 +66,8 @@
 		726B98CC1E0325EB00094124 /* TMapsSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TMapsSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		726B98D01E0325EB00094124 /* TMapsSampleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMapsSampleUITests.m; sourceTree = "<group>"; };
 		726B98D21E0325EB00094124 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		77F9A3C52135469800215761 /* Config.Secrets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.Secrets.plist; sourceTree = "<group>"; };
+		77F9A3C7213546A000215761 /* Config.Secrets.Example.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.Secrets.Example.plist; sourceTree = "<group>"; };
 		7B7A818B88480B11512C642A /* Pods-TMapsSampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TMapsSampleUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TMapsSampleUITests/Pods-TMapsSampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A2B2907DD0C06B5FF9E10E41 /* Pods-TMapsSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TMapsSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TMapsSample/Pods-TMapsSample.debug.xcconfig"; sourceTree = "<group>"; };
 		C35B9C1F2057B18C00290F57 /* tenants.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = tenants.json; sourceTree = "<group>"; };
@@ -134,6 +138,8 @@
 				726B98B71E0325EB00094124 /* Assets.xcassets */,
 				726B98B91E0325EB00094124 /* LaunchScreen.storyboard */,
 				726B98BC1E0325EB00094124 /* Info.plist */,
+				77F9A3C7213546A000215761 /* Config.Secrets.Example.plist */,
+				77F9A3C52135469800215761 /* Config.Secrets.plist */,
 				726B98AB1E0325EB00094124 /* Supporting Files */,
 				725923E11E033B2F003CDC17 /* TGMapViewController.h */,
 				725923E21E033B2F003CDC17 /* TGMapViewController.m */,
@@ -313,7 +319,9 @@
 				726B98BB1E0325EB00094124 /* LaunchScreen.storyboard in Resources */,
 				726B98B81E0325EB00094124 /* Assets.xcassets in Resources */,
 				725D3CAC1E0697F6008DD13C /* tmapswww in Resources */,
+				77F9A3C8213546A000215761 /* Config.Secrets.Example.plist in Resources */,
 				726B98B61E0325EB00094124 /* Main.storyboard in Resources */,
+				77F9A3C62135469900215761 /* Config.Secrets.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,7 +357,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		3C970AFB59420D93652600FA /* [CP] Check Pods Manifest.lock */ = {
@@ -367,7 +375,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		51EED44AB5BEF2978D34EAC4 /* [CP] Embed Pods Frameworks */ = {
@@ -445,7 +453,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		8C95AE52F6166D806FF131E0 /* [CP] Copy Pods Resources */ = {
