@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#define CLIENT_ID @"client_id"
+#define CLIENT_SECRET @"client_secret"
 
 #import <CoreLocation/CoreLocation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
@@ -165,6 +167,16 @@ didFailToUpdatePositionWithError:(NSError *)error {
                                @"theme": @{
                                        @"primary":@"brown",
                                        }
+                               }];
+        [controller dispatch:@{
+                              @"type": @"SET_APPLICATION_SECRETS",
+                              @"client_id": [TGMapViewController getAppSecretInfoValueForKey:CLIENT_ID],
+                              @"client_secret": [TGMapViewController getAppSecretInfoValueForKey:CLIENT_SECRET]
+                              }];
+        [controller dispatch:@{
+                               @"type": @"SET_DEVICE_DATA",
+                               @"device_id": [NSString stringWithFormat:@"%@",[[[UIDevice currentDevice] identifierForVendor] UUIDString]],
+                               @"device_type": @"IOS"
                                }];
     } else if ([type isEqualToString:@"MAP_LOADED"]) {
 //        [controller dispatch:@{
