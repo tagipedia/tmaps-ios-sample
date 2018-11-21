@@ -1,3 +1,20 @@
-PODFILE CHECKSUM: 66289826bd39d75b8f7e5fe5c3aefcdf6c2af6f9
+PODS:
+  - EstimoteIndoorSDK (2.7.1):
+    - EstimoteSDK (~> 4.16.0)
+  - EstimoteSDK (4.16.2)
 
-COCOAPODS: 1.4.0
+DEPENDENCIES:
+  - EstimoteIndoorSDK
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - EstimoteIndoorSDK
+    - EstimoteSDK
+
+SPEC CHECKSUMS:
+  EstimoteIndoorSDK: 53eaf12601b855f1d7eea7ae930d3fb8f66fb71d
+  EstimoteSDK: 17d0778be064419dd905f41981f831052f4c19ee
+
+PODFILE CHECKSUM: e845149855ce6669441cf2a49054d3186a4a8848
+
+COCOAPODS: 1.5.3
