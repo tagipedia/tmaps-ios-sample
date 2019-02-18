@@ -159,7 +159,16 @@ didFailToUpdatePositionWithError:(NSError *)error {
 //                                       @"primary":@"brown",
 //                                       }
 //                               }];
-        
+        [controller dispatch:@{
+                              @"type": @"SET_APPLICATION_SECRETS",
+                              @"client_id": [TGMapViewController getAppSecretInfoValueForKey:CLIENT_ID],
+                              @"client_secret": [TGMapViewController getAppSecretInfoValueForKey:CLIENT_SECRET]
+                              }];
+        [controller dispatch:@{
+                               @"type": @"SET_DEVICE_DATA",
+                               @"device_id": [NSString stringWithFormat:@"%@",[[[UIDevice currentDevice] identifierForVendor] UUIDString]],
+                               @"device_type": @"IOS"
+                               }];        
         // load map
         [controller dispatch:@{
                                @"type": @"LOAD_MAP",
