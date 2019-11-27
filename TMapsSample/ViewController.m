@@ -9,10 +9,12 @@
 #import "ViewController.h"
 #define CLIENT_ID @"client_id"
 #define CLIENT_SECRET @"client_secret"
+#define MAPBOX_ACCESS_TOKEN @"mapbox_access_token"
 
 #import <CoreLocation/CoreLocation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
-@interface ViewController ()
+#import "TMapsSample-Swift.h"
+@interface ViewController () <NavigationMapDelegate>
 
 @end
 
@@ -67,6 +69,30 @@ didFailToUpdatePositionWithError:(NSError *)error {
     NSString *path = [[NSBundle mainBundle] pathForResource:@"tenants" ofType:@"json"];
     NSData *data = [NSData dataWithContentsOfFile:path];
     return [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+}
+-(void) navigationEndWithTGMapViewController:(TGMapViewController *)tGMapViewController origin:(CLLocationCoordinate2D)origin destination:(CLLocationCoordinate2D)destination profile:(NSString *)profile isCanceld:(BOOL)isCanceld{
+    if(isCanceld){
+        NSMutableDictionary* originDictionary = [[NSMutableDictionary alloc] init];
+        [originDictionary setObject:[NSNumber numberWithDouble:origin.latitude] forKey:@"lat"];
+        [originDictionary setObject:[NSNumber numberWithDouble:origin.longitude] forKey:@"lng"];
+        NSMutableDictionary* destinationDictionary = [[NSMutableDictionary alloc] init];
+        [destinationDictionary setObject:[NSNumber numberWithDouble:destination.latitude] forKey:@"lat"];
+        [destinationDictionary setObject:[NSNumber numberWithDouble:destination.longitude] forKey:@"lng"];
+        
+        [tGMapViewController dispatch:@{
+                                        @"type": @"NAVIGATION_END",
+                                        @"origin": originDictionary,
+                                        @"destination": destinationDictionary,
+                                        @"profile": profile
+                                        }];
+    }
+    else {
+        [tGMapViewController dispatch:@{
+                                        @"type": @"NAVIGATION_CANCELED"
+                                        }];
+    }
+    
+    
 }
 
 -(void) mapViewController:(TGMapViewController *)controller didReceiveDispatchWithCommand:(NSDictionary *)command {
@@ -169,6 +195,10 @@ didFailToUpdatePositionWithError:(NSError *)error {
                                @"device_id": [NSString stringWithFormat:@"%@",[[[UIDevice currentDevice] identifierForVendor] UUIDString]],
                                @"device_type": @"IOS"
                                }];        
+        [controller dispatch:@{
+                               @"type": @"SET_MAPBOX_ACCESS_TOKEN",
+                               @"access_token": [TGMapViewController getAppSecretInfoValueForKey:MAPBOX_ACCESS_TOKEN],
+                               }];
         // load map
         [controller dispatch:@{
                                @"type": @"LOAD_MAP",
@@ -223,6 +253,21 @@ didFailToUpdatePositionWithError:(NSError *)error {
     } else if ([type isEqualToString:@"CATEGORY_MARKED"]) {
         
     } else if ([type isEqualToString:@"ERROR"]) {
+        
+    }
+    else if([type isEqualToString:@"START_NAVIGATION"]){
+        NSString* profile = [command valueForKey:@"profile"];
+        CLLocationDegrees lat = [[[command valueForKey:@"origin"] valueForKey:@"lat"] doubleValue];
+        CLLocationDegrees lng = [[[command valueForKey:@"origin"] valueForKey:@"lng"] doubleValue];
+        CLLocationCoordinate2D origin = CLLocationCoordinate2DMake(lat, lng);
+        lat = [[[command valueForKey:@"destination"] valueForKey:@"lat"] doubleValue];
+        lng = [[[command valueForKey:@"destination"] valueForKey:@"lng"] doubleValue];
+        CLLocationCoordinate2D destination = CLLocationCoordinate2DMake(lat, lng);
+                NavigationMapOutDoorViewController *navigationMapOutDoorViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NavigationMapOutDoor"];
+                [navigationMapOutDoorViewController setControllerWithController:controller];
+                [navigationMapOutDoorViewController setNeededNavigationDetailsWithOrigin:origin destination:destination profile:profile];
+                navigationMapOutDoorViewController.delegate = self;
+                [self.navigationController pushViewController:navigationMapOutDoorViewController animated:NO];
         
     } else if ([type isEqualToString:@"PROFILE_BUTTON_CLICKED"]) {
         // this is example for custom dispatch type that you dispatched in your custom templete when custom profile button clicked
