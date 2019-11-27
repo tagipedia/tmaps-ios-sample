@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TGMapViewController.h"
+@class NavigationMapOutDoorViewController;
 
 @interface ViewController : UIViewController<TGMapViewControllerDelegate>
 

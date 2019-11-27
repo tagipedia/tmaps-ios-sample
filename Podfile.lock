@@ -2,19 +2,59 @@ PODS:
   - EstimoteIndoorSDK (2.7.1):
     - EstimoteSDK (~> 4.16.0)
   - EstimoteSDK (4.16.2)
+  - Mapbox-iOS-SDK (5.5.0)
+  - MapboxCoreNavigation (0.38.1):
+    - MapboxDirections.swift (~> 0.30.0)
+    - MapboxMobileEvents (~> 0.9.5)
+    - MapboxNavigationNative (~> 6.2.1)
+    - Turf (~> 0.3.0)
+  - MapboxDirections.swift (0.30.0):
+    - Polyline (~> 4.2)
+  - MapboxMobileEvents (0.9.5)
+  - MapboxNavigation (0.38.1):
+    - Mapbox-iOS-SDK (~> 5.2)
+    - MapboxCoreNavigation (= 0.38.1)
+    - MapboxSpeech (~> 0.1.0)
+    - Solar (~> 2.1)
+  - MapboxNavigationNative (6.2.1)
+  - MapboxSpeech (0.1.1)
+  - Polyline (4.2.1)
+  - Solar (2.1.0)
+  - Turf (0.3.0)
 
 DEPENDENCIES:
   - EstimoteIndoorSDK
+  - MapboxNavigation (~> 0.38.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - EstimoteIndoorSDK
     - EstimoteSDK
+    - Mapbox-iOS-SDK
+    - MapboxCoreNavigation
+    - MapboxDirections.swift
+    - MapboxMobileEvents
+    - MapboxNavigation
+    - MapboxNavigationNative
+    - MapboxSpeech
+    - Polyline
+    - Solar
+    - Turf
 
 SPEC CHECKSUMS:
   EstimoteIndoorSDK: 53eaf12601b855f1d7eea7ae930d3fb8f66fb71d
   EstimoteSDK: 17d0778be064419dd905f41981f831052f4c19ee
+  Mapbox-iOS-SDK: 7fa66a27e586acb14c7f32ec5a487343e3994451
+  MapboxCoreNavigation: a0b212c232dcea1954ed27078ea5e76620a02f58
+  MapboxDirections.swift: 1c6df988c24b753888ebd9976d7c98632501a413
+  MapboxMobileEvents: f6c21b2e59066c5c7093585de7c15adae3b63da0
+  MapboxNavigation: cb3ca44dabf351a9636e01f62664715c9c2e9eea
+  MapboxNavigationNative: 11dc22140f4698d3f26989f2b6379dc81ef0d4c1
+  MapboxSpeech: 59b3984d3f433a443d24acf53097f918c5cc70f9
+  Polyline: 0e9890790292741c8186201a536b6bb6a78d02dd
+  Solar: 2dc6e7cc39186cb0c8228fa08df76fb50c7d8f24
+  Turf: c6bdf62d6a70c647874f295dd1cf4eefc0c3e9e6
 
-PODFILE CHECKSUM: e845149855ce6669441cf2a49054d3186a4a8848
+PODFILE CHECKSUM: 0c2489af6d1072430747fefe911ca94ada4e671e
 
 COCOAPODS: 1.5.3

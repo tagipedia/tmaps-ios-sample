@@ -2,6 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string></string>
+		<string>audio</string>
+	</array>
+	<key>MGLMapboxAccessToken</key>
+	<string></string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>to show nearest area to you</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -23,8 +32,6 @@
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>to show nearest area to you</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>to show nearest area to you</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>to show nearest area to you</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

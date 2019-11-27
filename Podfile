@@ -32,8 +32,8 @@ pod 'EstimoteIndoorSDK'
 
 target 'TMapsSample' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
-  # use_frameworks!
-
+   use_frameworks!
+  pod 'MapboxNavigation', '~> 0.38.0'
   # Pods for TMapsSample
 
   target 'TMapsSampleTests' do
